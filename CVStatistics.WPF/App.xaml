@@ -1,0 +1,31 @@
+﻿<Application
+    x:Class="CVStatistics.WPF.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:CVStatistics.WPF">
+    <!--  Убираем StartupUri="MainWindow.xaml" , т.к. инициализация основоного окна происходит в App.xaml.cs через DI  -->
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--  Data Templates  -->
+                <!--
+                <ResourceDictionary Source="pack://application:,,,/CoronaStatistics.2.PresentationLayer;component/DataTemplates.xaml" />
+                -->
+                <!--  Convertors  -->
+                <!--
+                <ResourceDictionary>
+                    <convertors:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+                    <convertors:DiameterAndThicknessToStrokeDashArrayConverter x:Key="DiameterAndThicknessToStrokeDashArrayConverter" />
+                </ResourceDictionary>
+                -->
+                <!--  Styles  -->
+                <!--
+                <ResourceDictionary Source="pack://application:,,,/CoronaStatistics.2.PresentationLayer;component/Styles/_Colors.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/CoronaStatistics.2.PresentationLayer;component/Styles/TextBlock.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/CoronaStatistics.2.PresentationLayer;component/Styles/TextBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/CoronaStatistics.2.PresentationLayer;component/Styles/RadioButton.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/CoronaStatistics.2.PresentationLayer;component/Styles/Button.xaml" />-->
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
