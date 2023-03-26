@@ -25,6 +25,7 @@ namespace CVStatistics.WPF.Extensions.HostBuilders
 
                 services.AddSingleton<MainWindowV>();
                 services.AddSingleton<MainWindowVM>();
+                services.AddSingleton<DemoVM>();
             });
             return host;
         }

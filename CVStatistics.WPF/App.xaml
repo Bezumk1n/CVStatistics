@@ -8,9 +8,9 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <!--  Data Templates  -->
-                <!--
-                <ResourceDictionary Source="pack://application:,,,/CoronaStatistics.2.PresentationLayer;component/DataTemplates.xaml" />
-                -->
+                <ResourceDictionary Source="DataTemplates.xaml" />
+                <!--<ResourceDictionary Source="pack://application:,,,/CoronaStatistics.2.PresentationLayer;component/DataTemplates.xaml" />-->
+
                 <!--  Convertors  -->
                 <!--
                 <ResourceDictionary>
@@ -18,6 +18,12 @@
                     <convertors:DiameterAndThicknessToStrokeDashArrayConverter x:Key="DiameterAndThicknessToStrokeDashArrayConverter" />
                 </ResourceDictionary>
                 -->
+                <!--  Styles  -->
+                <ResourceDictionary Source="/Styles/_Colors.xaml" />
+                <ResourceDictionary Source="/Styles/TextBlock.xaml" />
+                <ResourceDictionary Source="/Styles/TextBox.xaml" />
+                <ResourceDictionary Source="/Styles/RadioButton.xaml" />
+                <ResourceDictionary Source="/Styles/Button.xaml" />
                 <!--  Styles  -->
                 <!--
                 <ResourceDictionary Source="pack://application:,,,/CoronaStatistics.2.PresentationLayer;component/Styles/_Colors.xaml" />
