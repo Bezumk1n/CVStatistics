@@ -44,7 +44,7 @@ namespace CVStatistics.Services
         /// Навигация через фабрику DI
         /// </summary>
         /// <typeparam name="TViewModel"></typeparam>
-        public void Navigate<TViewModel>()
+        public void Navigate<TViewModel>() where TViewModel : VM
         {
             VM viewModel = _viewModelFactory.Invoke(typeof(TViewModel));
             CurrentViewModel = viewModel;
