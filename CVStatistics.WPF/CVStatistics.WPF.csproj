@@ -12,4 +12,9 @@
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CVStatistics.Domain\CVStatistics.Domain.csproj" />
+    <ProjectReference Include="..\CVStatistics.Services\CVStatistics.Services.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,6 +1,6 @@
 ﻿using CVStatistics.Domain.BaseObjects;
+using CVStatistics.Domain.Interfaces;
 using CVStatistics.WPF.Commands;
-using CVStatistics.WPF.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace CVStatistics.WPF.ViewModels
 {
-    public class MainWindowVM : BaseVM
+    public class MainWindowVM : VM
     {
         #region Properties
         /// <summary>
@@ -20,7 +20,7 @@ namespace CVStatistics.WPF.ViewModels
         /// <summary>
         /// Текущия модель представления
         /// </summary>
-        public BaseVM CurrentViewModel => _navigationService.CurrentViewModel;
+        public VM CurrentViewModel => _navigationService.CurrentViewModel;
         #endregion
         #region Commsnds
         public ICommand CommandNavigateToDemo { get; }

@@ -21,7 +21,7 @@ namespace CVStatistics.WPF.Extensions.HostBuilders
             host.ConfigureServices(services =>
             {
                 // Фабрика ViewModel
-                services.AddSingleton<Func<Type, BaseVM>>(serviceProvider => viewModelType => (BaseVM)serviceProvider.GetRequiredService(viewModelType));
+                services.AddSingleton<Func<Type, VM>>(serviceProvider => viewModelType => (VM)serviceProvider.GetRequiredService(viewModelType));
 
                 services.AddSingleton<MainWindowV>();
                 services.AddSingleton<MainWindowVM>();

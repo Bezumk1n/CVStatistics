@@ -9,26 +9,8 @@ using System.Threading.Tasks;
 
 namespace CVStatistics.Domain.BaseObjects
 {
-    /// <summary>
-    /// Базовый класс для всех вью моделей
-    /// </summary>
-    public class BaseVM : INotifyPropertyChanged
+    public class NotifyObject : INotifyPropertyChanged
     {
-        #region Common properties
-        /// <summary>
-        /// Переопределяемы заголовок вью модели
-        /// </summary>
-        public virtual string Title
-        {
-            get => _Title;
-            set
-            {
-                _Title = value;
-                OnPropertyChanged();
-            }
-        }
-        private string _Title = string.Empty;
-        #endregion
         #region Notification
         public event PropertyChangedEventHandler? PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

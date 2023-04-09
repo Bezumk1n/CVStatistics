@@ -1,17 +1,14 @@
 ﻿using CVStatistics.Domain.BaseObjects;
-using CVStatistics.WPF.ViewModels;
+using CVStatistics.Domain.Interfaces;
 using System;
+using System.Buffers.Text;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Navigation;
 
-namespace CVStatistics.WPF.Services
+namespace CVStatistics.Services
 {
-    /// <summary>
-    /// Класс-навигатор для смены текущего представления CurrentViewModel
-    /// </summary>
     public class NavigationService : INavigationService
     {
         #region Events
@@ -21,11 +18,11 @@ namespace CVStatistics.WPF.Services
         public Action CurrentViewModelChanged { get; set; }
         #endregion
         #region Properties
-        private readonly Func<Type, BaseVM> _viewModelFactory;
+        private readonly Func<Type, VM> _viewModelFactory;
         /// <summary>
         /// Текущая вью-модель
         /// </summary>
-        public BaseVM CurrentViewModel
+        public VM CurrentViewModel
         {
             get => _CurrentViewModel;
             private set
@@ -34,10 +31,10 @@ namespace CVStatistics.WPF.Services
                 CurrentViewModelChanged?.Invoke();
             }
         }
-        private BaseVM _CurrentViewModel;
+        private VM _CurrentViewModel;
         #endregion
         #region Constructor
-        public NavigationService(Func<Type, BaseVM> viewModelFactory)
+        public NavigationService(Func<Type, VM> viewModelFactory)
         {
             _viewModelFactory = viewModelFactory;
         }
@@ -47,9 +44,9 @@ namespace CVStatistics.WPF.Services
         /// Навигация через фабрику DI
         /// </summary>
         /// <typeparam name="TViewModel"></typeparam>
-        public void Navigate<TViewModel>() where TViewModel : BaseVM
+        public void Navigate<TViewModel>()
         {
-            BaseVM viewModel = _viewModelFactory.Invoke(typeof(TViewModel));
+            VM viewModel = _viewModelFactory.Invoke(typeof(TViewModel));
             CurrentViewModel = viewModel;
         }
         #endregion

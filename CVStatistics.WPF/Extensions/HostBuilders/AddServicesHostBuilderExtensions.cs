@@ -1,4 +1,5 @@
-﻿using CVStatistics.WPF.Services;
+﻿using CVStatistics.Domain.Interfaces;
+using CVStatistics.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;

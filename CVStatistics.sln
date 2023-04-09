@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CVStatistics.Domain", "CVStatistics.Domain\CVStatistics.Domain.csproj", "{C789191F-1546-497C-B9DC-219B93D3247C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CVStatistics.Domain", "CVStatistics.Domain\CVStatistics.Domain.csproj", "{C789191F-1546-497C-B9DC-219B93D3247C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CVStatistics.WPF", "CVStatistics.WPF\CVStatistics.WPF.csproj", "{C4032258-8CF5-4355-BC83-322D19A82197}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CVStatistics.WPF", "CVStatistics.WPF\CVStatistics.WPF.csproj", "{C4032258-8CF5-4355-BC83-322D19A82197}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CVStatistics.Server", "CVStatistics.Server\CVStatistics.Server.csproj", "{1DD79077-A5AC-44FD-81F4-4692268EBEBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CVStatistics.Server", "CVStatistics.Server\CVStatistics.Server.csproj", "{1DD79077-A5AC-44FD-81F4-4692268EBEBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CVStatistics.EntityFramework", "CVStatistics.EntityFramework\CVStatistics.EntityFramework.csproj", "{130E66E1-D05E-4BB0-9F65-D07D99930B58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CVStatistics.EntityFramework", "CVStatistics.EntityFramework\CVStatistics.EntityFramework.csproj", "{130E66E1-D05E-4BB0-9F65-D07D99930B58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CVStatistics.Services", "CVStatistics.Services\CVStatistics.Services.csproj", "{38DA7FAD-AD8B-425C-A836-4E352B4A1FE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{130E66E1-D05E-4BB0-9F65-D07D99930B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{130E66E1-D05E-4BB0-9F65-D07D99930B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{130E66E1-D05E-4BB0-9F65-D07D99930B58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38DA7FAD-AD8B-425C-A836-4E352B4A1FE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38DA7FAD-AD8B-425C-A836-4E352B4A1FE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38DA7FAD-AD8B-425C-A836-4E352B4A1FE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38DA7FAD-AD8B-425C-A836-4E352B4A1FE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

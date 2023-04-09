@@ -7,9 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\DTO\" />
-    <Folder Include="Models\DAL\" />
-    <Folder Include="Models\PL\" />
+    <ProjectReference Include="..\CVStatistics.Domain\CVStatistics.Domain.csproj" />
   </ItemGroup>
 
 </Project>

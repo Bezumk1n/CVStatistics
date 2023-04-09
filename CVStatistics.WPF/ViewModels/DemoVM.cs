@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CVStatistics.WPF.ViewModels
 {
-    public class DemoVM : BaseVM
+    public class DemoVM : VM
     {
         public override string Title => "Экран для демонстрации отдельных компонентов";
     }
