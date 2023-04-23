@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CVStatistics.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -7,10 +8,25 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CVStatistics.Domain.BaseObjects
+namespace CVStatistics.WPF.ViewModels
 {
-    public class NotifyObject : INotifyPropertyChanged
+    public class BaseVM : IViewModel, INotifyPropertyChanged
     {
+        #region Common properties
+        /// <summary>
+        /// Переопределяемы заголовок вью модели
+        /// </summary>
+        public virtual string Title
+        {
+            get => _Title;
+            set
+            {
+                _Title = value;
+                OnPropertyChanged();
+            }
+        }
+        private string _Title = string.Empty;
+        #endregion
         #region Notification
         public event PropertyChangedEventHandler? PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

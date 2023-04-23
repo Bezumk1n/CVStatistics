@@ -1,4 +1,4 @@
-﻿using CVStatistics.Domain.BaseObjects;
+﻿using CVStatistics.Domain.Interfaces;
 using CVStatistics.WPF.ViewModels;
 using CVStatistics.WPF.Views;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,7 +21,7 @@ namespace CVStatistics.WPF.Extensions.HostBuilders
             host.ConfigureServices(services =>
             {
                 // Фабрика ViewModel
-                services.AddSingleton<Func<Type, VM>>(serviceProvider => viewModelType => (VM)serviceProvider.GetRequiredService(viewModelType));
+                services.AddSingleton<Func<Type, IViewModel>>(serviceProvider => viewModelType => (IViewModel)serviceProvider.GetRequiredService(viewModelType));
 
                 services.AddSingleton<MainWindowV>();
                 services.AddSingleton<MainWindowVM>();

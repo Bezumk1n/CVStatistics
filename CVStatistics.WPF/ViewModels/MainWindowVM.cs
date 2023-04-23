@@ -1,5 +1,4 @@
-﻿using CVStatistics.Domain.BaseObjects;
-using CVStatistics.Domain.Interfaces;
+﻿using CVStatistics.Domain.Interfaces;
 using CVStatistics.WPF.Commands;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,7 @@ using System.Windows.Input;
 
 namespace CVStatistics.WPF.ViewModels
 {
-    public class MainWindowVM : VM
+    public class MainWindowVM : BaseVM
     {
         #region Properties
         public override string Title => "Coronavirus Statistics";
@@ -21,7 +20,7 @@ namespace CVStatistics.WPF.ViewModels
         /// <summary>
         /// Текущия модель представления
         /// </summary>
-        public VM CurrentViewModel => _navigationService.CurrentViewModel;
+        public IViewModel CurrentViewModel => _navigationService.CurrentViewModel;
         #endregion
         #region Commsnds
         public ICommand CommandNavigateToMain { get; }

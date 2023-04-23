@@ -1,5 +1,4 @@
-﻿using CVStatistics.Domain.BaseObjects;
-using System;
+﻿using System;
 using System.Buffers.Text;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,11 +16,11 @@ namespace CVStatistics.Domain.Interfaces
         /// <summary>
         /// Текущая вью-модель
         /// </summary>
-        public VM CurrentViewModel { get; }
+        public IViewModel CurrentViewModel { get; }
         /// <summary>
         /// Задать новую вью модель
         /// </summary>
         /// <typeparam name="TViewModel">Класс вью-модели</typeparam>
-        public void Navigate<TViewModel>() where TViewModel : VM;
+        public void Navigate<IViewModel>();
     }
 }

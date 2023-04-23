@@ -1,5 +1,4 @@
-﻿using CVStatistics.Domain.BaseObjects;
-using CVStatistics.Domain.Interfaces;
+﻿using CVStatistics.Domain.Interfaces;
 using System;
 using System.Buffers.Text;
 using System.Collections.Generic;
@@ -18,11 +17,11 @@ namespace CVStatistics.Services.Navigation
         public event Action CurrentViewModelChanged;
         #endregion
         #region Properties
-        private readonly Func<Type, VM> _viewModelFactory;
+        private readonly Func<Type, IViewModel> _viewModelFactory;
         /// <summary>
         /// Текущая вью-модель
         /// </summary>
-        public VM CurrentViewModel
+        public IViewModel CurrentViewModel
         {
             get => _CurrentViewModel;
             private set
@@ -31,10 +30,10 @@ namespace CVStatistics.Services.Navigation
                 CurrentViewModelChanged?.Invoke();
             }
         }
-        private VM _CurrentViewModel;
+        private IViewModel _CurrentViewModel;
         #endregion
         #region Constructor
-        public NavigationService(Func<Type, VM> viewModelFactory)
+        public NavigationService(Func<Type, IViewModel> viewModelFactory)
         {
             _viewModelFactory = viewModelFactory;
         }
@@ -44,12 +43,11 @@ namespace CVStatistics.Services.Navigation
         /// Навигация через фабрику DI
         /// </summary>
         /// <typeparam name="TViewModel"></typeparam>
-        public void Navigate<TViewModel>() where TViewModel : VM
+        public void Navigate<IViewModel>()
         {
             try
             {
-                VM viewModel = _viewModelFactory.Invoke(typeof(TViewModel));
-                CurrentViewModel = viewModel;
+                CurrentViewModel = _viewModelFactory.Invoke(typeof(IViewModel));
             }
             catch (InvalidOperationException notFound)
             {
