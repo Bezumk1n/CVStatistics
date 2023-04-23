@@ -4,7 +4,16 @@
     xmlns:V="clr-namespace:CVStatistics.WPF.Views"
     xmlns:VM="clr-namespace:CVStatistics.WPF.ViewModels">
     <!--  Templates для связки ViewModel с соответствующей View  -->
+    <DataTemplate DataType="{x:Type VM:MainStatisticsVM}">
+        <V:MainStatisticsV />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type VM:DetailedStatisticsVM}">
+        <V:DetailedStatisticsV />
+    </DataTemplate>
     <DataTemplate DataType="{x:Type VM:DemoVM}">
         <V:DemoV />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type VM:InfoVM}">
+        <V:InfoV />
     </DataTemplate>
 </ResourceDictionary>

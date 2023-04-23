@@ -25,32 +25,21 @@
         <!--  Кнопки навигации  -->
         <WrapPanel Grid.Row="1" Orientation="Horizontal">
             <RadioButton
-                Command="{Binding CommandNavigateToDemo}"
-                Content="Демо"
+                Command="{Binding CommandNavigateToMain}"
+                Content="Основная информация"
                 Style="{StaticResource RadioButton_NavigationBar}" />
-            <!--<RadioButton
-                Command="{Binding CommandNavigate}"
-                CommandParameter="{x:Static view:ViewType.Detalization}"
+            <RadioButton
+                Command="{Binding CommandNavigateToDetails}"
                 Content="Детальная информация"
                 Style="{StaticResource RadioButton_NavigationBar}" />
             <RadioButton
-                Command="{Binding CommandNavigate}"
-                CommandParameter="{x:Static view:ViewType.Worksheets}"
-                Content="Рабочие листы"
+                Command="{Binding CommandNavigateToDemo}"
+                Content="Демо"
                 Style="{StaticResource RadioButton_NavigationBar}" />
             <RadioButton
-                Command="{Binding CommandNavigate}"
-                CommandParameter="{x:Static view:ViewType.About}"
+                Command="{Binding CommandNavigateToInfo}"
                 Content="О приложении"
                 Style="{StaticResource RadioButton_NavigationBar}" />
-            <RadioButton
-                Command="{Binding CommandNavigateAbout}"
-                Content="О приложении 2"
-                Style="{StaticResource RadioButton_NavigationBar}" />
-            <RadioButton
-                Command="{Binding CommandNavigateAboutInDialog}"
-                Content="О приложении в диалоговом окне"
-                Style="{StaticResource RadioButton_NavigationBar}" />-->
         </WrapPanel>
     </Grid>
 </UserControl>

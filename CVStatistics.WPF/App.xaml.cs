@@ -26,12 +26,8 @@ namespace CVStatistics.WPF
         private IHostBuilder CreateHostBuilder(string[] args)
         {
             return Host.CreateDefaultBuilder(args)
-                //.AddConfiguration()
-                //.AddSerilogConfiguration()
-                //.AddDbContext()
                 .AddServices()
                 .AddViewModels();
-                //.AddAPI();
         }
         protected override void OnStartup(StartupEventArgs e)
         {

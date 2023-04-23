@@ -13,7 +13,7 @@ namespace CVStatistics.Domain.Interfaces
         /// <summary>
         /// Событие смены текущей вью-модели
         /// </summary>
-        public Action CurrentViewModelChanged { get; set; }
+        public event Action CurrentViewModelChanged;
         /// <summary>
         /// Текущая вью-модель
         /// </summary>

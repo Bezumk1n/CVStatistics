@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CVStatistics.Services
+namespace CVStatistics.Services.Navigation
 {
     public class NavigationService : INavigationService
     {
@@ -15,7 +15,7 @@ namespace CVStatistics.Services
         /// <summary>
         /// Событие изменения текущей вью-модели
         /// </summary>
-        public Action CurrentViewModelChanged { get; set; }
+        public event Action CurrentViewModelChanged;
         #endregion
         #region Properties
         private readonly Func<Type, VM> _viewModelFactory;
@@ -46,8 +46,16 @@ namespace CVStatistics.Services
         /// <typeparam name="TViewModel"></typeparam>
         public void Navigate<TViewModel>() where TViewModel : VM
         {
-            VM viewModel = _viewModelFactory.Invoke(typeof(TViewModel));
-            CurrentViewModel = viewModel;
+            try
+            {
+                VM viewModel = _viewModelFactory.Invoke(typeof(TViewModel));
+                CurrentViewModel = viewModel;
+            }
+            catch (InvalidOperationException notFound)
+            {
+                //TODO Оповестить пользователя о том что отсутствует необходимая вью-модель
+                //Возможно ее не зарегистрировали в файле AddViewModelsHostBuilderExtension
+            }
         }
         #endregion
     }
