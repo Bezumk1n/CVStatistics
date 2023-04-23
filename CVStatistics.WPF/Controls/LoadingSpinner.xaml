@@ -1,0 +1,62 @@
+﻿<UserControl
+    x:Class="CVStatistics.WPF.Controls.LoadingSpinner"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:CVStatistics.WPF.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Name="LoadingSpinnerControl"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Grid Visibility="{Binding _IsLoading, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=LoadingSpinnerControl}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <!--<Border
+            Grid.RowSpan="2"
+            Background="Black"
+            Opacity="0.1" />-->
+        <Ellipse
+            Grid.Row="0"
+            Width="{Binding _Diameter, ElementName=LoadingSpinnerControl}"
+            Height="{Binding _Diameter, ElementName=LoadingSpinnerControl}"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            RenderTransformOrigin="0.5 0.5"
+            Stroke="{Binding _Color, ElementName=LoadingSpinnerControl}"
+            StrokeDashCap="{Binding _Cap, ElementName=LoadingSpinnerControl}"
+            StrokeThickness="{Binding _Thickness, ElementName=LoadingSpinnerControl}">
+            <Ellipse.StrokeDashArray>
+                <MultiBinding Converter="{StaticResource DiameterAndThicknessToStrokeDashArrayConverter}">
+                    <Binding ElementName="LoadingSpinnerControl" Path="_Diameter" />
+                    <Binding ElementName="LoadingSpinnerControl" Path="_Thickness" />
+                </MultiBinding>
+            </Ellipse.StrokeDashArray>
+            <Ellipse.RenderTransform>
+                <RotateTransform x:Name="Rotation" Angle="0" />
+            </Ellipse.RenderTransform>
+            <Ellipse.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard RepeatBehavior="Forever">
+                            <DoubleAnimation
+                                Storyboard.TargetName="Rotation"
+                                Storyboard.TargetProperty="Angle"
+                                From="0"
+                                To="360" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Ellipse.Triggers>
+        </Ellipse>
+        <TextBlock
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            FontSize="{Binding _FontSize, ElementName=LoadingSpinnerControl}"
+            Foreground="{Binding _Color, ElementName=LoadingSpinnerControl}"
+            Text="{Binding _Text, ElementName=LoadingSpinnerControl}" />
+    </Grid>
+</UserControl>

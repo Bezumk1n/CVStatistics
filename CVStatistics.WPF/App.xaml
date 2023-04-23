@@ -2,6 +2,7 @@
     x:Class="CVStatistics.WPF.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:CVStatistics.WPF.Converters"
     xmlns:local="clr-namespace:CVStatistics.WPF">
     <!--  Убираем StartupUri="MainWindow.xaml" , т.к. инициализация основоного окна происходит в App.xaml.cs через DI  -->
     <Application.Resources>
@@ -11,13 +12,12 @@
                 <ResourceDictionary Source="DataTemplates.xaml" />
                 <!--<ResourceDictionary Source="pack://application:,,,/CoronaStatistics.2.PresentationLayer;component/DataTemplates.xaml" />-->
 
-                <!--  Convertors  -->
-                <!--
+                <!--  Converters  -->
                 <ResourceDictionary>
-                    <convertors:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-                    <convertors:DiameterAndThicknessToStrokeDashArrayConverter x:Key="DiameterAndThicknessToStrokeDashArrayConverter" />
+                    <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+                    <converters:DiameterAndThicknessToStrokeDashArrayConverter x:Key="DiameterAndThicknessToStrokeDashArrayConverter" />
                 </ResourceDictionary>
-                -->
+
                 <!--  Styles  -->
                 <ResourceDictionary Source="/Styles/_Colors.xaml" />
                 <ResourceDictionary Source="/Styles/TextBlock.xaml" />
