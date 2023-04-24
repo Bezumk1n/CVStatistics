@@ -1,4 +1,5 @@
 ﻿using CVStatistics.Domain.Interfaces;
+using CVStatistics.Services.CoronavirusServices;
 using CVStatistics.Services.Navigation;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -17,9 +18,10 @@ namespace CVStatistics.WPF.Extensions.HostBuilders
     {
         public static IHostBuilder AddServices(this IHostBuilder host)
         {
-            host.ConfigureServices(services =>
+            host.ConfigureServices((context, services) =>
             {
                 services.AddSingleton<INavigationService, NavigationService>();
+                services.AddSingleton<ICoronavirusService, CoronavirusService>();
             });
             return host;
         }

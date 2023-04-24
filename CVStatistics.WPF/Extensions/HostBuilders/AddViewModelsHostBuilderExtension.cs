@@ -2,6 +2,7 @@
 using CVStatistics.WPF.ViewModels;
 using CVStatistics.WPF.Views;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;

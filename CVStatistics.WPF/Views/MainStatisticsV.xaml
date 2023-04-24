@@ -2,6 +2,7 @@
     x:Class="CVStatistics.WPF.Views.MainStatisticsV"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:CVStatistics.WPF.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:CVStatistics.WPF.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -9,6 +10,62 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Grid>
-        <TextBlock Text="{Binding Title}" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel
+            Grid.Row="0"
+            Grid.Column="0"
+            Orientation="Horizontal">
+            <!--  Заголовок  -->
+            <TextBlock Style="{StaticResource TextBlock_Title}" Text="Мировая статистика" />
+            <!--  Кнопка обновления статистики  -->
+            <Button
+                Padding="5"
+                VerticalAlignment="Center"
+                Command="{Binding CommandRefreshStatistics}"
+                Content="Обновить"
+                FontSize="8"
+                Style="{StaticResource Button_Main}"
+                ToolTip="Обновить статистику" />
+        </StackPanel>
+        <controls:GlobalInformationCard Grid.Row="1" Grid.Column="0" />
+        <!--  Заголовок  -->
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="1"
+            Style="{StaticResource TextBlock_Title}"
+            Text="Топ 10 стран по заболеваемости" />
+        <!--  Список стран из топ 10  -->
+        <ScrollViewer
+            Grid.Row="1"
+            Grid.Column="1"
+            HorizontalScrollBarVisibility="Auto"
+            VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding SummaryStatistics.Countries}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Rows="2" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <controls:CountryInformationCard />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        <!--  Спиннер загрузки информации  -->
+        <controls:LoadingSpinner
+            Grid.Row="1"
+            Grid.Column="1"
+            _Color="{StaticResource MainSeconColor}"
+            _IsLoading="{Binding IsLoading}"
+            _Text="Загружаю общую статистику..." />
     </Grid>
 </UserControl>

@@ -17,6 +17,7 @@ namespace CVStatistics.WPF.ViewModels
         /// Сервис навигации
         /// </summary>
         private readonly INavigationService _navigationService;
+
         /// <summary>
         /// Текущия модель представления
         /// </summary>

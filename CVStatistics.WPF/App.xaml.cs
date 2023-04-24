@@ -27,7 +27,8 @@ namespace CVStatistics.WPF
         {
             return Host.CreateDefaultBuilder(args)
                 .AddServices()
-                .AddViewModels();
+                .AddViewModels()
+                .AddAPI();
         }
         protected override void OnStartup(StartupEventArgs e)
         {
