@@ -18,7 +18,7 @@ namespace CVStatistics.WPF.ViewModels
         /// <summary>
         /// Общая статистика
         /// </summary>
-        public SummaryStatisticsPL SummaryStatistics
+        public SummaryStatistics SummaryStatistics
         {
             get => _summaryStatistics;
             set
@@ -27,7 +27,7 @@ namespace CVStatistics.WPF.ViewModels
                 OnPropertyChanged();
             }
         }
-        private SummaryStatisticsPL _summaryStatistics = new SummaryStatisticsPL();
+        private SummaryStatistics _summaryStatistics = new SummaryStatistics();
         #region States
         /// <summary>
         /// Статус загрузки статистики

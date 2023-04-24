@@ -25,17 +25,18 @@ namespace CVStatistics.Services.CoronavirusServices
         /// Метод возвращает суммарную информацию по всем странам
         /// </summary>
         /// <returns></returns>
-        public async Task<SummaryStatisticsPL> GetSummary()
+        public async Task<SummaryStatistics> GetSummary()
         {
             string uri = "http://192.168.0.175:5000/api/v1/CoronavirusStatistics/GetSummary";
 
-            var result = new SummaryStatisticsPL();
+            var result = new SummaryStatistics();
 
             var response = await _client.GetData(uri);
             
-            if (response.isSuccess)
+            if (response.IsSuccess)
             {
-                var deserializedList = response.Value.Select(q => JsonConvert.DeserializeObject<SummaryStatisticsPL>(q.ToString())).ToArray();
+                var value = response.Value as IEnumerable<object>; 
+                var deserializedList = value.Select(q => JsonConvert.DeserializeObject<SummaryStatistics>(q.ToString())).ToArray();
                 result = deserializedList.FirstOrDefault();
             }
             else

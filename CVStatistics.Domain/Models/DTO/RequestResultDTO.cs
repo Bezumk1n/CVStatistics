@@ -9,7 +9,7 @@ namespace CVStatistics.Domain.Models.DTO
     public class RequestResultDTO
     {
         public string Message { get; set; }
-        public bool isSuccess { get; set; }
-        public IEnumerable<object> Value { get; set; }
+        public bool IsSuccess { get; set; }
+        public object? Value { get; set; }
     }
 }

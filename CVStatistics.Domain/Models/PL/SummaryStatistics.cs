@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace CVStatistics.Domain.Models.PL
 {
-    public class SummaryStatisticsPL
+    public class SummaryStatistics
     {
         public string ID { get; set; }
         public string Message { get; set; }
-        public GlobalPL Global { get; set; }
-        public IEnumerable<CountryDetailsPL> Countries { get; set; } = Enumerable.Empty<CountryDetailsPL>();
+        public Global Global { get; set; }
+        public IEnumerable<CountryDetails> Countries { get; set; } = Enumerable.Empty<CountryDetails>();
         public DateTime Date { get; set; }
     }
 }

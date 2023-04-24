@@ -10,7 +10,7 @@ namespace CVStatistics.Domain.Interfaces
 {
     public interface ICoronavirusService
     {
-        Task<SummaryStatisticsPL> GetSummary();
+        Task<SummaryStatistics> GetSummary();
         //Task<RequestResultDTO> GetCountriesList();
         //Task<RequestResultDTO> GetStatisticsByCountry(string slug);
     }
