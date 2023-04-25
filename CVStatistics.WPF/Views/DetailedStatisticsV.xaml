@@ -2,13 +2,164 @@
     x:Class="CVStatistics.WPF.Views.DetailedStatisticsV"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:CVStatistics.WPF.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:CVStatistics.WPF.Views"
+    xmlns:map="clr-namespace:MapControl;assembly=MapControl.WPF"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <Grid >
-        <TextBlock Text="{Binding Title}" />
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="5*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <!--  Список стран  -->
+        <GroupBox
+            Grid.Row="0"
+            Grid.Column="0"
+            Header="Список стран">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBox
+                    Grid.Row="0"
+                    Style="{StaticResource TextBox_WithTag}"
+                    Tag="Введите наименование страны..."
+                    Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
+                <ListView
+                    Grid.Row="1"
+                    Margin="3"
+                    ItemsSource="{Binding FilteredCountries}"
+                    SelectedItem="{Binding SelectedCountry}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                Margin="0"
+                                Style="{StaticResource TextBlock_Main}"
+                                Text="{Binding Country}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </GroupBox>
+        <!--  Детальная информация по выбранной стране  -->
+        <GroupBox
+            Grid.Row="0"
+            Grid.Column="1"
+            Header="Детальная информация">
+            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding CountryDetails}">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Дата">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Date, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Код страны">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding CountryCode}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Наименование">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Country}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Провинция">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Province}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--<DataGridTemplateColumn Header="Город">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding City}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Код города">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding CityCode}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
+                    <DataGridTemplateColumn Header="Подтверждённых случаев">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Confirmed}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Смертей">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Deaths}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Выздоровлений">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Recovered}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+        <!--  Карта  -->
+        <GroupBox
+            Grid.Row="2"
+            Grid.ColumnSpan="2"
+            Header="Карта">
+            <map:Map
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Center="{Binding CountryLocation}"
+                MaxZoomLevel="21"
+                ZoomLevel="6">
+                <map:MapScale Opacity="0.5" />
+                <map:MapGraticule Opacity="0.5" />
+                <map:Map.MapLayer>
+                    <!--<map:MapTileLayer TileSource="https://{c}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png" />-->
+                    <!--<map:MapTileLayer TileSource="https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png"/>-->
+                    <map:MapTileLayer TileSource="http://tile.stamen.com/toner-lite/{z}/{x}/{y}.png" />
+                    <!--<map:MapTileLayer TileSource="http://c.tile.openstreetmap.org/{z}/{x}/{y}.png" />-->
+                </map:Map.MapLayer>
+            </map:Map>
+        </GroupBox>
+        <!--  Спиннер загрузки списка стран  -->
+        <controls:LoadingSpinner
+            Grid.Row="0"
+            Grid.Column="0"
+            VerticalAlignment="Center"
+            _Color="{StaticResource MainSeconColor}"
+            _IsLoading="{Binding IsCountryListLoading}"
+            _Text="Загружаю список стран..." />
+        <!--  Спиннер загрузки информации по выбранной стране  -->
+        <controls:LoadingSpinner
+            Grid.Row="0"
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            _Color="{StaticResource MainSeconColor}"
+            _IsLoading="{Binding IsDetailsLoading}"
+            _Text="Загружаю детальную информацию по стране..." />
     </Grid>
 </UserControl>

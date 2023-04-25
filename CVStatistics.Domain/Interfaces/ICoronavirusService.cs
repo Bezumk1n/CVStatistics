@@ -12,6 +12,6 @@ namespace CVStatistics.Domain.Interfaces
     {
         Task<SummaryStatistics> GetSummary();
         Task<IEnumerable<CountryInfo>> GetCountriesList();
-        //Task<RequestResultDTO> GetStatisticsByCountry(string slug);
+        Task<IEnumerable<CountryDetailed>> GetStatisticsByCountry(string slug);
     }
 }

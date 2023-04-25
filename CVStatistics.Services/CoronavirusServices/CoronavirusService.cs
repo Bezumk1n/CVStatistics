@@ -67,5 +67,29 @@ namespace CVStatistics.Services.CoronavirusServices
             }
             return result;
         }
+        /// <summary>
+        /// Метод получает всю статистику по выбранной стране (по дням)
+        /// </summary>
+        /// <param name="slug">Код страны из списка стран</param>
+        /// <returns></returns>
+        public async Task<IEnumerable<CountryDetailed>> GetStatisticsByCountry(string slug)
+        {
+            string uri = "http://192.168.0.175:5000/api/v1/CoronavirusStatistics/GetStatisticsByCountry/" + slug;
+            var response = await _client.GetData(uri);
+
+            var result = Enumerable.Empty<CountryDetailed>();
+
+            if (response.IsSuccess)
+            {
+                var value = response.Value as IEnumerable<object>;
+                var deserializedList = value.Select(q => JsonConvert.DeserializeObject<CountryDetailed>(q.ToString())).ToArray();
+                result = deserializedList;
+            }
+            else
+            {
+                //TODO Сообщить пользователю об ошибке
+            }
+            return result;
+        }
     }
 }

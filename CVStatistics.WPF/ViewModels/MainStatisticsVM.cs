@@ -70,8 +70,6 @@ namespace CVStatistics.WPF.ViewModels
                 SummaryStatistics = result;
             }
             IsLoading = false;
-
-            var r2 = await _coronavirusService.GetCountriesList();
         }
         #endregion
     }
