@@ -4,6 +4,6 @@ namespace CVStatistics.Domain.Interfaces
 {
     public interface ICVStatisticsApiHttpClient
     {
-        Task<RequestResultDTO> GetData(string uri);
+        Task<ResultDTO> GetData(string uri);
     }
 }

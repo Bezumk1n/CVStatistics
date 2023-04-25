@@ -17,9 +17,9 @@ namespace CVStatistics.Services.ApiHttpClient
         {
             _client = client;
         }
-        public async Task<RequestResultDTO> GetData(string uri)
+        public async Task<ResultDTO> GetData(string uri)
         {
-            var result = new RequestResultDTO();
+            var result = new ResultDTO();
             try
             {
                 HttpResponseMessage response = await _client.GetAsync(uri);
@@ -27,7 +27,7 @@ namespace CVStatistics.Services.ApiHttpClient
                 if (response.IsSuccessStatusCode)
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
-                    result = JsonConvert.DeserializeObject<RequestResultDTO>(jsonResponse);
+                    result = JsonConvert.DeserializeObject<ResultDTO>(jsonResponse);
                 }
             }
             catch (Exception ex)

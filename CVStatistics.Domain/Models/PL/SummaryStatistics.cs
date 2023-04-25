@@ -11,7 +11,7 @@ namespace CVStatistics.Domain.Models.PL
         public string ID { get; set; }
         public string Message { get; set; }
         public Global Global { get; set; }
-        public IEnumerable<CountryDetails> Countries { get; set; } = Enumerable.Empty<CountryDetails>();
+        public IEnumerable<CountryDetailed> Countries { get; set; } = Enumerable.Empty<CountryDetailed>();
         public DateTime Date { get; set; }
     }
 }

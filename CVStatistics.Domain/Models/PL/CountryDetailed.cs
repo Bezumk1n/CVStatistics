@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CVStatistics.Domain.Models.PL
 {
-    public class CountryDetails
+    public class CountryDetailed
     {
         public string ID { get; set; }
         public string Country { get; set; }

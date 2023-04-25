@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CVStatistics.Domain.Models.DTO
 {
-    public class RequestResultDTO
+    public class ResultDTO
     {
         public string Message { get; set; }
         public bool IsSuccess { get; set; }

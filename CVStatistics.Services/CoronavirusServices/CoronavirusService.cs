@@ -28,10 +28,9 @@ namespace CVStatistics.Services.CoronavirusServices
         public async Task<SummaryStatistics> GetSummary()
         {
             string uri = "http://192.168.0.175:5000/api/v1/CoronavirusStatistics/GetSummary";
+            var response = await _client.GetData(uri);
 
             var result = new SummaryStatistics();
-
-            var response = await _client.GetData(uri);
             
             if (response.IsSuccess)
             {
@@ -43,7 +42,29 @@ namespace CVStatistics.Services.CoronavirusServices
             {
                 //TODO Сообщить пользователю об ошибке
             }
+            return result;
+        }
+        /// <summary>
+        /// Метод получает список всех стран без дополнительной информации для статистики
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IEnumerable<CountryInfo>> GetCountriesList()
+        {
+            string uri = "http://192.168.0.175:5000/api/v1/CoronavirusStatistics/GetCountriesList";
+            var response = await _client.GetData(uri);
 
+            var result = Enumerable.Empty<CountryInfo>();
+            
+            if (response.IsSuccess)
+            {
+                var value = response.Value as IEnumerable<object>;
+                var deserializedList = value.Select(q => JsonConvert.DeserializeObject<CountryInfo>(q.ToString())).ToArray();
+                result = deserializedList;
+            }
+            else
+            {
+                //TODO Сообщить пользователю об ошибке
+            }
             return result;
         }
     }
