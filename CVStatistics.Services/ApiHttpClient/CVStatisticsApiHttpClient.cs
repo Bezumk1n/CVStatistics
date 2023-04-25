@@ -13,11 +13,9 @@ namespace CVStatistics.Services.ApiHttpClient
     public class CVStatisticsApiHttpClient : ICVStatisticsApiHttpClient
     {
         private readonly HttpClient _client;
-        private readonly ILogger<CVStatisticsApiHttpClient> _logger;
-        public CVStatisticsApiHttpClient(HttpClient client, ILogger<CVStatisticsApiHttpClient> logger)
+        public CVStatisticsApiHttpClient(HttpClient client)
         {
             _client = client;
-            _logger = logger;
         }
         public async Task<RequestResultDTO> GetData(string uri)
         {
@@ -34,8 +32,8 @@ namespace CVStatistics.Services.ApiHttpClient
             }
             catch (Exception ex)
             {
-                //TODO Оповестить пользователя об ошибке
-                //$"Ошибка при попытке получить информацию по запросу:{Environment.NewLine}{uri}"
+                result.IsSuccess = false;
+                result.Message = ex.Message;
             }
             return result;
         }
