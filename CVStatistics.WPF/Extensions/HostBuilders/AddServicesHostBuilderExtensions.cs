@@ -21,6 +21,7 @@ namespace CVStatistics.WPF.Extensions.HostBuilders
             host.ConfigureServices((context, services) =>
             {
                 services.AddSingleton<INavigationService, NavigationService>();
+                services.AddSingleton<IDialogService, DialogService>();
                 services.AddSingleton<ICoronavirusService, CoronavirusService>();
             });
             return host;

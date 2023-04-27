@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Registrars\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\CVStatistics.Domain\CVStatistics.Domain.csproj" />
     <ProjectReference Include="..\CVStatistics.Services\CVStatistics.Services.csproj" />
   </ItemGroup>
