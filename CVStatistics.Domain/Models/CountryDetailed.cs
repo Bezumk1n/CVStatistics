@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CVStatistics.Domain.Models.PL
+namespace CVStatistics.Domain.Models
 {
     public class CountryDetailed
     {

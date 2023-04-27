@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CVStatistics.Services.ApiHttpClient
+namespace CVStatistics.Services.API
 {
     public class CVStatisticsApiHttpClient : ICVStatisticsApiHttpClient
     {
@@ -28,6 +28,11 @@ namespace CVStatistics.Services.ApiHttpClient
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     result = JsonConvert.DeserializeObject<ResultDTO>(jsonResponse);
+                }
+                else
+                {
+                    result.IsSuccess = false;
+                    result.Message = response.ReasonPhrase;
                 }
             }
             catch (Exception ex)

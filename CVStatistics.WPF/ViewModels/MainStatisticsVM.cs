@@ -1,5 +1,5 @@
 ﻿using CVStatistics.Domain.Interfaces;
-using CVStatistics.Domain.Models.PL;
+using CVStatistics.Domain.Models;
 using CVStatistics.WPF.Commands;
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace CVStatistics.WPF.ViewModels
         /// <summary>
         /// Общая статистика
         /// </summary>
-        public SummaryStatistics SummaryStatistics
+        public MainStatistics SummaryStatistics
         {
             get => _summaryStatistics;
             set
@@ -27,7 +27,7 @@ namespace CVStatistics.WPF.ViewModels
                 OnPropertyChanged();
             }
         }
-        private SummaryStatistics _summaryStatistics = new SummaryStatistics();
+        private MainStatistics _summaryStatistics = new MainStatistics();
         #region States
         /// <summary>
         /// Статус загрузки статистики

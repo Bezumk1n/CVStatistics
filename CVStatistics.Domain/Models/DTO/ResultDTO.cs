@@ -8,8 +8,8 @@ namespace CVStatistics.Domain.Models.DTO
 {
     public class ResultDTO
     {
-        public string Message { get; set; }
+        public string Message { get; set; } = string.Empty;
         public bool IsSuccess { get; set; }
-        public object Value { get; set; }
+        public object? Value { get; set; }
     }
 }

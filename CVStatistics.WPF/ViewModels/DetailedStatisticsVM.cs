@@ -1,5 +1,5 @@
 ﻿using CVStatistics.Domain.Interfaces;
-using CVStatistics.Domain.Models.PL;
+using CVStatistics.Domain.Models;
 using CVStatistics.Services.CoronavirusServices;
 using MapControl;
 using System;

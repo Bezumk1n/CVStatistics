@@ -1,6 +1,6 @@
 ﻿using CVStatistics.Domain.Interfaces;
+using CVStatistics.Domain.Models;
 using CVStatistics.Domain.Models.DTO;
-using CVStatistics.Domain.Models.PL;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -25,17 +25,17 @@ namespace CVStatistics.Services.CoronavirusServices
         /// Метод возвращает суммарную информацию по всем странам
         /// </summary>
         /// <returns></returns>
-        public async Task<SummaryStatistics> GetSummary()
+        public async Task<MainStatistics> GetSummary()
         {
             string uri = "http://192.168.0.175:5000/api/v1/CoronavirusStatistics/GetSummary";
             var response = await _client.GetData(uri);
 
-            var result = new SummaryStatistics();
+            var result = new MainStatistics();
             
             if (response.IsSuccess)
             {
-                var value = response.Value as IEnumerable<object>; 
-                var deserializedList = value.Select(q => JsonConvert.DeserializeObject<SummaryStatistics>(q.ToString())).ToArray();
+                var value = response.Value as IEnumerable<object>;
+                var deserializedList = value.Select(q => JsonConvert.DeserializeObject<MainStatistics>(q.ToString())).ToArray();
                 result = deserializedList.FirstOrDefault();
             }
             else

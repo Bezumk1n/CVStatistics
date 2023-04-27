@@ -1,5 +1,5 @@
-﻿using CVStatistics.Domain.Models.DTO;
-using CVStatistics.Domain.Models.PL;
+﻿using CVStatistics.Domain.Models;
+using CVStatistics.Domain.Models.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ namespace CVStatistics.Domain.Interfaces
 {
     public interface ICoronavirusService
     {
-        Task<SummaryStatistics> GetSummary();
+        Task<MainStatistics> GetSummary();
         Task<IEnumerable<CountryInfo>> GetCountriesList();
         Task<IEnumerable<CountryDetailed>> GetStatisticsByCountry(string slug);
     }
