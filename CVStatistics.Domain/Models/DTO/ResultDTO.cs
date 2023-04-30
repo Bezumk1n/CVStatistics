@@ -10,6 +10,6 @@ namespace CVStatistics.Domain.Models.DTO
     {
         public string Message { get; set; } = string.Empty;
         public bool IsSuccess { get; set; }
-        public object? Value { get; set; }
+        public ICollection<object> Value { get; set; }
     }
 }

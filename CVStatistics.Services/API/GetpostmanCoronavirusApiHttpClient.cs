@@ -34,7 +34,9 @@ namespace CVStatistics.Services.API
                 }
                 else
                 {
-                    result.Value = new[] { JsonConvert.DeserializeObject<T>(jsonResponse) };
+                    var value = JsonConvert.DeserializeObject<T>(jsonResponse);
+                    result.Value = new List<object>();
+                    result.Value.Add(value);
                 }
             }
             catch (Exception ex)
@@ -62,7 +64,12 @@ namespace CVStatistics.Services.API
                 }
                 else
                 {
-                    result.Value = JsonConvert.DeserializeObject<IEnumerable<T>>(jsonResponse);
+                    var value = JsonConvert.DeserializeObject<IEnumerable<T>> (jsonResponse);
+                    result.Value = new List<object>();
+                    foreach (var element in value)
+                    {
+                        result.Value.Add (element);
+                    }
                 }
             }
             catch (Exception ex)
