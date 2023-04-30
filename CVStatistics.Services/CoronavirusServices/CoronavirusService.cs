@@ -34,8 +34,7 @@ namespace CVStatistics.Services.CoronavirusServices
             
             if (response.IsSuccess)
             {
-                var value = response.Value as IEnumerable<object>;
-                var deserializedList = value.Select(q => JsonConvert.DeserializeObject<MainStatistics>(q.ToString())).ToArray();
+                var deserializedList = response.Value.Select(q => JsonConvert.DeserializeObject<MainStatistics>(q.ToString())).ToArray();
                 result = deserializedList.FirstOrDefault();
             }
             else
@@ -57,7 +56,6 @@ namespace CVStatistics.Services.CoronavirusServices
             
             if (response.IsSuccess)
             {
-                var value = response.Value as ICollection<object>;
                 var deserializedList = response.Value.Select(q => JsonConvert.DeserializeObject<CountryInfo>(q.ToString())).ToArray();
                 result = deserializedList;
             }
