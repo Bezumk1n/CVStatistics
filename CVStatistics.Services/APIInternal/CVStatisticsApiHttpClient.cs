@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CVStatistics.Services.API
+namespace CVStatistics.Services.APIInternal
 {
     public class CVStatisticsApiHttpClient : ICVStatisticsApiHttpClient
     {

@@ -1,6 +1,7 @@
 ﻿using CVStatistics.Domain.Interfaces;
 using CVStatistics.Server.Options;
-using CVStatistics.Services.API;
+using CVStatistics.Services;
+using CVStatistics.Services.APIExternal;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
@@ -43,6 +44,8 @@ namespace CVStatistics.Server.Extensions
 
             builder.Services.AddAutoMapper(typeof(Program));
             builder.Services.AddHttpClient<IGetpostmanCoronavirusApiHttpClient, GetpostmanCoronavirusApiHttpClient>();
+            builder.Services.AddScoped<IExternalCoronavirusService, ExternalCoronavirusService>();
+            builder.Services.AddHostedService<UpdateLocalStatisticsService>();
             //builder.Services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
             //builder.Services.AddScoped<IPasswordHasher<AccountDAL>, PasswordHasher<AccountDAL>>();
         }

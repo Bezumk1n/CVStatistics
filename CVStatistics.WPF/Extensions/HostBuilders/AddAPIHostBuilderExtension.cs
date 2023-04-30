@@ -1,5 +1,5 @@
 ﻿using CVStatistics.Domain.Interfaces;
-using CVStatistics.Services.API;
+using CVStatistics.Services.APIInternal;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;

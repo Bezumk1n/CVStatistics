@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CVStatistics.Services.API
+namespace CVStatistics.Services.APIExternal
 {
     public class GetpostmanCoronavirusApiHttpClient : IGetpostmanCoronavirusApiHttpClient
     {
@@ -64,11 +64,11 @@ namespace CVStatistics.Services.API
                 }
                 else
                 {
-                    var value = JsonConvert.DeserializeObject<IEnumerable<T>> (jsonResponse);
+                    var value = JsonConvert.DeserializeObject<IEnumerable<T>>(jsonResponse);
                     result.Value = new List<object>();
                     foreach (var element in value)
                     {
-                        result.Value.Add (element);
+                        result.Value.Add(element);
                     }
                 }
             }

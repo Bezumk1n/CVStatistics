@@ -9,10 +9,10 @@ namespace CVStatistics.Server.Controllers.V1
     [ApiController]
     public class CoronavirusStatisticsController : Controller
     {
-        private readonly IGetpostmanCoronavirusApiHttpClient _httpClient;
-        public CoronavirusStatisticsController(IGetpostmanCoronavirusApiHttpClient httpClient)
+        private readonly IExternalCoronavirusService _service;
+        public CoronavirusStatisticsController(IExternalCoronavirusService service)
         {
-            _httpClient = httpClient;
+            _service = service;
         }
         [HttpGet]
         [Route("GetCountriesList")]
@@ -22,9 +22,8 @@ namespace CVStatistics.Server.Controllers.V1
         /// <returns></returns>
         public async Task<IActionResult> GetCountriesList()
         {
-            string uri = "https://api.covid19api.com/countries";
-            var response = await _httpClient.GetListData<CountryInfo>(uri);
-            return Ok(response);
+            var result = await _service.GetCountriesList();
+            return Ok(result);
         }
         [HttpGet]
         [Route("GetSummary")]
@@ -34,8 +33,7 @@ namespace CVStatistics.Server.Controllers.V1
         /// <returns></returns>
         public async Task<IActionResult> GetSummary()
         {
-            string uri = "https://api.covid19api.com/summary";
-            var result = await _httpClient.GetData<MainStatistics>(uri);
+            var result = await _service.GetSummary();
             return Ok(result);
         }
         [HttpGet]
@@ -47,8 +45,7 @@ namespace CVStatistics.Server.Controllers.V1
         /// <returns></returns>
         public async Task<IActionResult> GetStatisticsByCountry(string slug)
         {
-            string uri = "https://api.covid19api.com/dayone/country/" + slug;
-            var result = await _httpClient.GetListData<CountryDetailed>(uri);
+            var result = await _service.GetStatisticsByCountry(slug);
             return Ok(result);
         }
     }
