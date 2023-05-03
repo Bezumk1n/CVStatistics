@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CVStatistics.Domain.Models
 {
-    public class Global
+    public class Global : Entity
     {
         public int NewConfirmed { get; set; }
         public int TotalConfirmed { get; set; }

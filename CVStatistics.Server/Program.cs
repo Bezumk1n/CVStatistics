@@ -1,3 +1,4 @@
+using CVStatistics.EntityFramework;
 using CVStatistics.Server.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);

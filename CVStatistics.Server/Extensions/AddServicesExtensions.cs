@@ -1,10 +1,12 @@
 ﻿using CVStatistics.Domain.Interfaces;
+using CVStatistics.EntityFramework;
 using CVStatistics.Server.Options;
 using CVStatistics.Services;
 using CVStatistics.Services.APIExternal;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
 namespace CVStatistics.Server.Extensions
@@ -46,8 +48,10 @@ namespace CVStatistics.Server.Extensions
             builder.Services.AddHttpClient<IGetpostmanCoronavirusApiHttpClient, GetpostmanCoronavirusApiHttpClient>();
             builder.Services.AddScoped<IExternalCoronavirusService, ExternalCoronavirusService>();
             builder.Services.AddHostedService<UpdateLocalStatisticsService>();
-            //builder.Services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
-            //builder.Services.AddScoped<IPasswordHasher<AccountDAL>, PasswordHasher<AccountDAL>>();
+
+            var connectionString = builder.Configuration.GetConnectionString("npgsql");
+            builder.Services.AddDbContext<RepositoryContext>(options => options.UseNpgsql(connectionString));
+            builder.Services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
         }
     }
 }

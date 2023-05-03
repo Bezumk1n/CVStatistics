@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.ApiExplorer;
+﻿using CVStatistics.EntityFramework;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace CVStatistics.Server.Extensions
 {
@@ -18,6 +21,20 @@ namespace CVStatistics.Server.Extensions
             app.UseHttpsRedirection();
             app.UseAuthorization();
             app.MapControllers();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var serviceProvider = scope.ServiceProvider;
+                try
+                {
+                    var context = serviceProvider.GetService<RepositoryContext>();
+                    context.Database.EnsureCreated();
+                }
+                catch (Exception exception)
+                {
+
+                }
+            }
         }
     }
 }

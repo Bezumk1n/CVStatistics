@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace CVStatistics.Domain.Models
 {
-    public class MainStatistics
+    public class MainStatistics : Entity
     {
-        public string ID { get; set; }
         public string Message { get; set; }
         public Global Global { get; set; }
         public IEnumerable<CountryDetailed> Countries { get; set; }

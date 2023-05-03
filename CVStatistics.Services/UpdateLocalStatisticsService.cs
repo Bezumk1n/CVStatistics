@@ -16,10 +16,12 @@ namespace CVStatistics.Services
     public class UpdateLocalStatisticsService : BackgroundService
     {
         private readonly IExternalCoronavirusService _externalCoronavirusService;
+        private readonly IRepositoryWrapper _repositoryWrapper;
 
         public UpdateLocalStatisticsService(IServiceProvider serviceProvider)
         {
             _externalCoronavirusService = serviceProvider.CreateScope().ServiceProvider.GetRequiredService<IExternalCoronavirusService>();
+            _repositoryWrapper = serviceProvider.CreateScope().ServiceProvider.GetRequiredService<IRepositoryWrapper>();
         }
         protected override async Task ExecuteAsync(CancellationToken cancellationToken)
         {
@@ -28,7 +30,7 @@ namespace CVStatistics.Services
                 try
                 {
                     var result = await _externalCoronavirusService.GetSummary();
-                    await Task.Delay(new TimeSpan(0,0,10));
+                    await Task.Delay(new TimeSpan(0,0,30));
                 }
                 catch (OperationCanceledException)
                 {
